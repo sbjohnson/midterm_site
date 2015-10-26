@@ -7,15 +7,15 @@ from .models import *
 
 class Home(TemplateView):
     template_name = "home.html"
-    
+
 class QuestionCreateView(CreateView):
     model = Question
     template_name = "question/question_form.html"
-    fields = ['title', 'tell_me_more']
+    fields = ['name', 'email', 'tell_me_more']
     success_url = reverse_lazy('home')
-    
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(QuestionCreateView, self).form_valid(form)
-    
-    
+
+
